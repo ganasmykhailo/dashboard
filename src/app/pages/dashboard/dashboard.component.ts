@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { DashboardService } from './dashboard.service';
+
+declare const TradingView: any;
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
 
   public themeFlag = false;
   public visible = 1;
@@ -132,16 +135,49 @@ export class DashboardComponent implements OnInit {
     'Forwards',
   ];
 
-  constructor() {}
+  public showTV: boolean;
+
+  constructor(private dashboardService: DashboardService) {
+  }
 
   ngOnInit() {
+    this.dashboardService.openTV$.subscribe((value) => this.showTV = value);
+  }
+
+  ngAfterViewInit() {
+    this.initTradingViewWidget();
   }
 
   public changedTheme(event) {
+    if (event === true) {
+      this.initTradingViewWidget('Dark');
+    } else {
+      this.initTradingViewWidget('Light');
+    }
     this.themeFlag = event;
   }
 
   public toggleTab(num: number) {
     this.visible = num;
+  }
+
+  public initTradingViewWidget(theme = 'Light') {
+    const widget = new TradingView.widget(
+      {
+        autosize: true,
+        symbol: 'NASDAQ:AAPL',
+        interval: 'D',
+        timezone: 'Etc/UTC',
+        theme,
+        style: '1',
+        locale: 'en',
+        toolbar_bg: '#f1f3f6',
+        enable_publishing: false,
+        withdateranges: true,
+        hide_side_toolbar: false,
+        save_image: false,
+        container_id: 'tradingview_592cc'
+      }
+    );
   }
 }

@@ -25,6 +25,10 @@
             background-color: #62B35F;
             transition: .15s ease-in;
           }
+          &.active{
+            background-color: #62B35F;
+            transition: .15s ease-in;
+          }
 
           img{
             &.side-bar-item-icon{

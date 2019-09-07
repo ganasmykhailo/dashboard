@@ -1,13 +1,13 @@
 <div class="side-bar">
   <ul class="side-bar-item-list">
-    <li class="side-bar-item">
+    <li class="side-bar-item" [class.active]="!showTV">
       <img [src]="'./assets/img/icons/graphic-icon.png'" alt="" class="side-bar-item-icon">
     </li>
-    <li class="side-bar-item">
-      <img [src]="'./assets/img/icons/tv-icon.png'" alt="" class="side-bar-item-icon">
+    <li class="side-bar-item" [class.active]="showTV">
+      <img [src]="'./assets/img/icons/tv-icon.png'" (click)="openTV()" alt="" class="side-bar-item-icon">
     </li>
     <li class="side-bar-item">
-      <img [src]="'./assets/img/icons/upload-icon.png'" alt="" class="side-bar-item-icon">
+      <img [src]="'./assets/img/icons/upload-icon.png'" (click)="openExportModal()" alt="" class="side-bar-item-icon">
     </li>
     <li class="side-bar-item" (click)="openCallModal()">
       <img [src]="'./assets/img/icons/call-icon.png'" alt="" class="side-bar-item-icon">

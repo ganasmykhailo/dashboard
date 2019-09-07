@@ -9,8 +9,11 @@ import { InfoBlockComponent } from './components/info-block/info-block.component
 import { OrderBlockComponent } from './components/order-block/order-block.component';
 import { CurrencyItemComponent } from './components/currency-item/currency-item.component';
 import { NewsItemComponent } from './components/news-item/news-item.component';
-import {BsDropdownModule, ModalModule, TabsModule} from 'ngx-bootstrap';
+import { BsDropdownModule, ModalModule, TabsModule } from 'ngx-bootstrap';
 import { CallModalComponent } from './modals/call-modal/call-modal.component';
+import { ExportModalComponent } from './modals/export-modal/export-modal.component';
+import { AngularDraggableModule } from 'angular2-draggable';
+import { TvComponent } from './components/tv/tv.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,13 @@ import { CallModalComponent } from './modals/call-modal/call-modal.component';
     InfoBlockComponent,
     OrderBlockComponent,
     NewsItemComponent,
-    CallModalComponent
+    CallModalComponent,
+    ExportModalComponent,
+    TvComponent
+  ],
+  entryComponents: [
+    CallModalComponent,
+    ExportModalComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +38,8 @@ import { CallModalComponent } from './modals/call-modal/call-modal.component';
     TabsModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    AngularDraggableModule
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {
+}

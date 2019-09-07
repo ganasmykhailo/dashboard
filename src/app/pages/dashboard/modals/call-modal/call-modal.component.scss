@@ -1,0 +1,14 @@
+:host {
+  font-size: 14px;
+  line-height: 24px;
+
+  .number {
+    margin-bottom: 9px;
+  }
+
+  button {
+    &.bg-green {
+      background: #0D6D52;
+    }
+  }
+}

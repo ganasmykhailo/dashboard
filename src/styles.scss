@@ -25,35 +25,58 @@
   transition: .5s linear;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
 }
 
-div{
+div {
   box-sizing: border-box;
 }
 
-.text-uppercase{
+.text-uppercase {
   text-transform: uppercase;
 }
 
-button{
+button {
   border-radius: 4px;
   border: none;
   height: 30px;
   cursor: pointer;
-  &.bg-green{
+
+  &.bg-green {
     background-color: #62B35F;
     color: #fff;
   }
-  &.w-100{
+
+  &.w-100 {
     width: 100%;
   }
 
-  &.border-green{
+  &.border-green {
     background-color: transparent;
     border: 1px solid #62B35F;
     color: var(--primary-text-color);
+  }
+}
+
+.modal-dialog.call-info-modal {
+  width: 170px;
+  background: var(--main-block-bg-color);
+  color: var(--primary-text-color);
+  border-radius: 12px;
+
+  .modal-content {
+    padding: 9px;
+  }
+}
+
+.modal-dialog.export-data-modal{
+  width: 360px;
+  background: var(--main-block-bg-color);
+  color: var(--primary-text-color);
+  border-radius: 12px;
+  .modal-content {
+    padding: 53px 80px 69px 80px;
   }
 }

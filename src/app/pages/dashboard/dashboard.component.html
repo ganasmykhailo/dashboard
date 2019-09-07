@@ -1,169 +1,172 @@
-<div class="dashboard-page" [ngClass]="themeFlag ? 'dark-theme' : 'light-theme'">
-  <app-nav-menu (themeChanged)="changedTheme($event)"></app-nav-menu>
-  <app-side-bar></app-side-bar>
+<div class="dashboard-page" [ngClass]="themeFlag ? 'dark-theme' : 'light-theme'" #divElement>
+	<app-nav-menu (themeChanged)="changedTheme($event)"></app-nav-menu>
+	<app-side-bar></app-side-bar>
 
-  <div class="main-board">
-    <div class="left-content-block">
-      <div class="tabs-header">
-        <div class="tab" id="items-list" dropdown dropdownToggle aria-controls="list-items">
-          <img [src]="'./assets/img/icons/settings-icon.png'" alt="list-icon" class="tab-icon">
+	<div class="main-board">
+		<div class="left-content-block">
+			<div class="tabs-header">
+				<div class="tab" id="items-list" dropdown dropdownToggle aria-controls="list-items">
+					<img [src]="'./assets/img/icons/settings-icon.png'" alt="list-icon" class="tab-icon">
 
-          <ul id="list-items" *dropdownMenu class="dropdown-menu"
-              role="menu" aria-labelledby="items-list">
-            <li *ngFor="let choice of ddItemsList">
-              <a class="dropdown-item" href="#">{{choice}}</a>
-            </li>
-          </ul>
-        </div>
-        <div class="tab" id="options-list" dropdown dropdownToggle aria-controls="list-options">
-          <img [src]="'./assets/img/icons/list-icon.png'" alt="list-icon" class="tab-icon">
+					<ul id="list-items" *dropdownMenu class="dropdown-menu"
+					    role="menu" aria-labelledby="items-list">
+						<li *ngFor="let choice of ddItemsList">
+							<a class="dropdown-item" href="#">{{choice}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="tab" id="options-list" dropdown dropdownToggle aria-controls="list-options">
+					<img [src]="'./assets/img/icons/list-icon.png'" alt="list-icon" class="tab-icon">
 
-          <ul id="list-options" *dropdownMenu class="dropdown-menu"
-              role="menu" aria-labelledby="options-list">
-            <li *ngFor="let choice of ddItemsOptions">
-              <a class="dropdown-item" href="#">{{choice}}</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+					<ul id="list-options" *dropdownMenu class="dropdown-menu"
+					    role="menu" aria-labelledby="options-list">
+						<li *ngFor="let choice of ddItemsOptions">
+							<a class="dropdown-item" href="#">{{choice}}</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 
-      <div class="tab-content">
-        <app-currency-item *ngFor="let item of currencyList" [currencyItem]="item"></app-currency-item>
-      </div>
-    </div>
+			<div class="tab-content">
+				<app-currency-item *ngFor="let item of currencyList" [currencyItem]="item"></app-currency-item>
+			</div>
+		</div>
 
-    <div class="main-content-block">
+		<div class="main-content-block">
+			<!-- TradingView Widget BEGIN -->
+			<div class="tradingview" id="tradingview_592cc"></div>
+			<!-- TradingView Widget END -->
 
-    </div>
+		</div>
 
-    <div class="right-content-block">
-      <div class="search-header">
+		<div class="right-content-block">
+			<div class="search-header">
         <span class="title">
           News
         </span>
-        <img [src]="'./assets/img/icons/search-icon.png'" alt="search-icon" class="search-icon">
-      </div>
-      <div class="search-content">
-        <app-news-item></app-news-item>
-        <app-news-item></app-news-item>
-        <app-news-item></app-news-item>
-      </div>
-    </div>
-  </div>
+				<img [src]="'./assets/img/icons/search-icon.png'" alt="search-icon" class="search-icon">
+			</div>
+			<div class="search-content">
+				<app-news-item></app-news-item>
+				<app-news-item></app-news-item>
+				<app-news-item></app-news-item>
+			</div>
+		</div>
+	</div>
 
-  <div class="order-block">
-    <div class="order-header">
+	<div class="order-block">
+		<div class="order-header">
 
-      <div class="order-tabs">
-        <div class="tab" [ngClass]="visible === 1 ? 'active' : ''" (click)="toggleTab(1)">
-          Order
-        </div>
-        <div class="tab" [ngClass]="visible === 2 ? 'active' : ''" (click)="toggleTab(2)">
-          History
-        </div>
-      </div>
+			<div class="order-tabs">
+				<div class="tab" [ngClass]="visible === 1 ? 'active' : ''" (click)="toggleTab(1)">
+					Order
+				</div>
+				<div class="tab" [ngClass]="visible === 2 ? 'active' : ''" (click)="toggleTab(2)">
+					History
+				</div>
+			</div>
 
-      <div class="order-settings">
-        <ng-container *ngIf="visible === 1">
-          <span class="order-before">Order</span>
-          <span class="pending-before">Pending</span>
-        </ng-container>
-        <a class="filter-icon">
-          <img [src]="'./assets/img/icons/filter-icon.png'" alt="filter-icon">
-        </a>
-      </div>
+			<div class="order-settings">
+				<ng-container *ngIf="visible === 1">
+					<span class="order-before">Order</span>
+					<span class="pending-before">Pending</span>
+				</ng-container>
+				<a class="filter-icon">
+					<img [src]="'./assets/img/icons/filter-icon.png'" alt="filter-icon">
+				</a>
+			</div>
 
-      <div class="order-list" [hidden]="visible !== 1">
-        <div class="order-list-header">
-          <span>Symbol</span>
-          <span>Ticket</span>
-          <span class="sortable">
+			<div class="order-list" [hidden]="visible !== 1">
+				<div class="order-list-header">
+					<span>Symbol</span>
+					<span>Ticket</span>
+					<span class="sortable">
             End Time
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
-          <span>Type</span>
-          <span class="sortable">
+					<span>Type</span>
+					<span class="sortable">
             Volume
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
-          <span>Open Price</span>
-          <span>Current Price</span>
-          <span>Fee</span>
-          <span class="sortable">
+					<span>Open Price</span>
+					<span>Current Price</span>
+					<span>Fee</span>
+					<span class="sortable">
             Profit
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
-          <span>Sender/Receiver</span>
-          <span>Comment</span>
-          <span>Close</span>
-        </div>
-        <div class="order-list-items">
-          <div class="item" *ngFor="let item of orderList">
-            <span [ngClass]="item.status === 'order' ? 'order-before' : 'pending-before'">{{item.symbol}}</span>
-            <span>{{item.ticket}}</span>
-            <span>{{item.endTime}}</span>
-            <span>{{item.type}}</span>
-            <span>{{item.volume}}</span>
-            <span>{{item.openPrice}}</span>
-            <span>{{item.currentPrice}}</span>
-            <span>{{item.fee}}</span>
-            <span>{{item.profit}}</span>
-            <span>{{item.client}}</span>
-            <span>{{item.comment}}</span>
-            <a class="remove">
-              <img [src]="'./assets/img/icons/close-icon.png'" alt="remove-icon" class="remove-icon">
-            </a>
-          </div>
-        </div>
-      </div>
+					<span>Sender/Receiver</span>
+					<span>Comment</span>
+					<span>Close</span>
+				</div>
+				<div class="order-list-items">
+					<div class="item" *ngFor="let item of orderList">
+						<span [ngClass]="item.status === 'order' ? 'order-before' : 'pending-before'">{{item.symbol}}</span>
+						<span>{{item.ticket}}</span>
+						<span>{{item.endTime}}</span>
+						<span>{{item.type}}</span>
+						<span>{{item.volume}}</span>
+						<span>{{item.openPrice}}</span>
+						<span>{{item.currentPrice}}</span>
+						<span>{{item.fee}}</span>
+						<span>{{item.profit}}</span>
+						<span>{{item.client}}</span>
+						<span>{{item.comment}}</span>
+						<a class="remove">
+							<img [src]="'./assets/img/icons/close-icon.png'" alt="remove-icon" class="remove-icon">
+						</a>
+					</div>
+				</div>
+			</div>
 
-      <div class="order-list" [hidden]="visible !== 2">
-        <div class="order-list-header">
-          <span>Symbol</span>
-          <span>Ticket</span>
-          <span class="sortable">
+			<div class="order-list" [hidden]="visible !== 2">
+				<div class="order-list-header">
+					<span>Symbol</span>
+					<span>Ticket</span>
+					<span class="sortable">
             End Time
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
-          <span>Type</span>
-          <span class="sortable">
+					<span>Type</span>
+					<span class="sortable">
             Volume
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
-          <span>Open Price</span>
-          <span>Current Price</span>
-          <span>Fee</span>
-          <span class="sortable">
+					<span>Open Price</span>
+					<span>Current Price</span>
+					<span>Fee</span>
+					<span class="sortable">
             Profit
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
-          <span>Sender/Receiver</span>
-          <span>Comment</span>
-        </div>
-        <div class="order-list-items">
-          <div class="item" *ngFor="let item of orderList">
-            <span>{{item.symbol}}</span>
-            <span>{{item.ticket}}</span>
-            <span>{{item.endTime}}</span>
-            <span>{{item.type}}</span>
-            <span>{{item.volume}}</span>
-            <span>{{item.openPrice}}</span>
-            <span>{{item.currentPrice}}</span>
-            <span>{{item.fee}}</span>
-            <span>{{item.profit}}</span>
-            <span>{{item.client}}</span>
-            <span>{{item.comment}}</span>
-          </div>
-        </div>
-      </div>
+					<span>Sender/Receiver</span>
+					<span>Comment</span>
+				</div>
+				<div class="order-list-items">
+					<div class="item" *ngFor="let item of orderList">
+						<span>{{item.symbol}}</span>
+						<span>{{item.ticket}}</span>
+						<span>{{item.endTime}}</span>
+						<span>{{item.type}}</span>
+						<span>{{item.volume}}</span>
+						<span>{{item.openPrice}}</span>
+						<span>{{item.currentPrice}}</span>
+						<span>{{item.fee}}</span>
+						<span>{{item.profit}}</span>
+						<span>{{item.client}}</span>
+						<span>{{item.comment}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
 
-
-    </div>
-  </div>
+		<app-tv *ngIf="showTV" [boundsElement]="divElement"></app-tv>
+	</div>
 </div>
