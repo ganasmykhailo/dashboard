@@ -28,7 +28,7 @@
 			</div>
 
 			<div class="tab-content">
-				<app-currency-item *ngFor="let item of currencyList" [currencyItem]="item"></app-currency-item>
+				<app-currency-item *ngFor="let item of currencyList" [currencyItem]="item" [themeFlag]="themeFlag"></app-currency-item>
 			</div>
 		</div>
 
@@ -80,13 +80,13 @@
 				<div class="order-list-header">
 					<span>Symbol</span>
 					<span>Ticket</span>
-					<span class="sortable">
+					<span class="sortable" (click)="sortColumnByfield(orderList, 'endTime')">
             End Time
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
 					<span>Type</span>
-					<span class="sortable">
+					<span class="sortable" (click)="sortColumnByfield(orderList, 'volume')">
             Volume
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
@@ -94,7 +94,7 @@
 					<span>Open Price</span>
 					<span>Current Price</span>
 					<span>Fee</span>
-					<span class="sortable">
+					<span class="sortable" (click)="sortColumnByfield(orderList, 'profit')">
             Profit
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
@@ -116,7 +116,7 @@
 						<span>{{item.profit}}</span>
 						<span>{{item.client}}</span>
 						<span>{{item.comment}}</span>
-						<a class="remove">
+						<a class="remove" (click)="removeOrderByTicket(item.ticket)">
 							<img [src]="'./assets/img/icons/close-icon.png'" alt="remove-icon" class="remove-icon">
 						</a>
 					</div>
@@ -127,13 +127,13 @@
 				<div class="order-list-header">
 					<span>Symbol</span>
 					<span>Ticket</span>
-					<span class="sortable">
+					<span class="sortable" (click)="sortColumnByfield(orderHistory, 'endTime')">
             End Time
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
           </span>
 					<span>Type</span>
-					<span class="sortable">
+					<span class="sortable" (click)="sortColumnByfield(orderHistory, 'volume')">
             Volume
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
@@ -141,7 +141,7 @@
 					<span>Open Price</span>
 					<span>Current Price</span>
 					<span>Fee</span>
-					<span class="sortable">
+					<span class="sortable" (click)="sortColumnByfield(orderHistory, 'profit')">
             Profit
             <img [src]="'./assets/img/icons/arrow-top-gray-icon.png'" alt="arrow-top" class="arrow-top">
             <img [src]="'./assets/img/icons/arrow-bottom-gray-icon.png'" alt="arrow-bottom" class="arrow-bottom">
@@ -150,7 +150,7 @@
 					<span>Comment</span>
 				</div>
 				<div class="order-list-items">
-					<div class="item" *ngFor="let item of orderList">
+					<div class="item" *ngFor="let item of orderHistory">
 						<span>{{item.symbol}}</span>
 						<span>{{item.ticket}}</span>
 						<span>{{item.endTime}}</span>

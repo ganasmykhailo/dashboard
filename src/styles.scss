@@ -80,3 +80,14 @@ button {
     padding: 53px 80px 69px 80px;
   }
 }
+
+.modal-dialog {
+  &.currency-modal {
+    width: 455px;
+    .modal-content {
+      padding: 10px 50px 50px;
+      background: var(--main-bg-color);
+      color: var(--primary-text-color);
+    }
+  }
+}

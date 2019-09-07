@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
+import {OrderService} from './services/order.service';
 
 declare const TradingView: any;
 
@@ -13,64 +14,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public themeFlag = false;
   public visible = 1;
 
-  public orderList = [
-    {
-      symbol: 'USD/EUR',
-      ticket: 1057,
-      endTime: '19/07/2019 16:51:23',
-      type: 'Buy',
-      volume: 10.00,
-      openPrice: 1.11034,
-      currentPrice: 1.11024,
-      fee: 0.00,
-      profit: -100.00,
-      client: 'BIT Corporation',
-      comment: '',
-      status: 'order',
-    },
-    {
-      symbol: 'USD/EUR',
-      ticket: 1057,
-      endTime: '19/07/2019 16:51:23',
-      type: 'Buy',
-      volume: 10.00,
-      openPrice: 1.11034,
-      currentPrice: 1.11024,
-      fee: 0.00,
-      profit: -100.00,
-      client: 'BIT Corporation',
-      comment: '',
-      status: 'pending',
-    },
-    {
-      symbol: 'USD/EUR',
-      ticket: 1057,
-      endTime: '19/07/2019 16:51:23',
-      type: 'Buy',
-      volume: 10.00,
-      openPrice: 1.11034,
-      currentPrice: 1.11024,
-      fee: 0.00,
-      profit: -100.00,
-      client: 'BIT Corporation',
-      comment: '',
-      status: 'order',
-    },
-    {
-      symbol: 'USD/EUR',
-      ticket: 1057,
-      endTime: '19/07/2019 16:51:23',
-      type: 'Buy',
-      volume: 10.00,
-      openPrice: 1.11034,
-      currentPrice: 1.11024,
-      fee: 0.00,
-      profit: -100.00,
-      client: 'BIT Corporation',
-      comment: '',
-      status: 'pending',
-    },
-  ];
+  public orderList;
+  public orderHistory;
 
   public currencyList = [
     {
@@ -137,10 +82,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   public showTV: boolean;
 
-  constructor(private dashboardService: DashboardService) {
+  constructor(private dashboardService: DashboardService,
+              private orderService: OrderService) {
   }
 
   ngOnInit() {
+    this.orderList = this.orderService.getOrderList();
+    this.orderHistory = this.orderService.getOrderHistory();
     this.dashboardService.openTV$.subscribe((value) => this.showTV = value);
   }
 
@@ -179,5 +127,26 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         container_id: 'tradingview_592cc'
       }
     );
+  }
+
+  public sortColumnByfield(array, field) {
+    array.sort((a, b) => {
+      const valA = a[field];
+      const valB = b[field];
+      if (valA < valB) {
+        return -1;
+      }
+      if (valA > valB) {
+        return 1;
+      }
+
+      return 0;
+    });
+  }
+
+  public removeOrderByTicket(ticket) {
+    this.orderService.removeOrder(ticket);
+    this.orderList = this.orderService.getOrderList();
+    this.orderHistory = this.orderService.getOrderHistory();
   }
 }
