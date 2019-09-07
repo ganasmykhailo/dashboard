@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrencyBlockComponent } from './currency-block.component';
+import { NewsItemComponent } from './news-item.component';
 
-describe('CurrencyBlockComponent', () => {
-  let component: CurrencyBlockComponent;
-  let fixture: ComponentFixture<CurrencyBlockComponent>;
+describe('NewsItemComponent', () => {
+  let component: NewsItemComponent;
+  let fixture: ComponentFixture<NewsItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrencyBlockComponent ]
+      declarations: [ NewsItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CurrencyBlockComponent);
+    fixture = TestBed.createComponent(NewsItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {CallModalComponent} from '../../modals/call-modal/call-modal.component';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor() { }
+  public bsModalRef: BsModalRef;
+
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
+  }
+
+  public openCallModal() {
+    this.bsModalRef = this.modalService.show(CallModalComponent, {});
   }
 
 }

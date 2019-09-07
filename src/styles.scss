@@ -1,7 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+.light-theme {
+  --main-bg-color: #f3f3f3;
+  --main-block-bg-color: #fff;
+  --primary-text-color: #1a1a1a;
+  --secondary-text-color: #fff;
+  --table-head-bg: #f2f2f2;
+  --table-list-color: #4f4f4f;
+  --nav-menu-color-light: #828282;
+  --news-text-color: #333;
+
+  transition: .5s linear;
+}
+
+.dark-theme {
+  --main-bg-color: #121212;
+  --main-block-bg-color: #1F1B24;
+  --primary-text-color: #fff;
+  --table-head-bg: #333;
+  --table-list-color: #fff;
+  --nav-menu-color-light: #f2f2f2;
+  --news-text-color: #fff;
+
+  transition: .5s linear;
+}
+
 body{
   margin: 0;
   padding: 0;
+}
+
+div{
+  box-sizing: border-box;
 }
 
 .text-uppercase{
@@ -12,11 +42,18 @@ button{
   border-radius: 4px;
   border: none;
   height: 30px;
+  cursor: pointer;
   &.bg-green{
     background-color: #62B35F;
     color: #fff;
   }
   &.w-100{
     width: 100%;
+  }
+
+  &.border-green{
+    background-color: transparent;
+    border: 1px solid #62B35F;
+    color: var(--primary-text-color);
   }
 }

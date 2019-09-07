@@ -1,1 +1,41 @@
-<p>nav-menu works!</p>
+<div class="nav-menu">
+
+  <img [src]="'./assets/img/logos/OTP-logo-transparent.png'" alt="OTP-small-logo" class="nav-menu-logo">
+
+  <ul class="info-items-block">
+    <li class="info-item">
+      Balance:
+      <b>9,705.45 USD </b>
+    </li>
+    <li class="info-item">
+      Balance:
+      <b>9,705.45 USD </b>
+    </li>
+    <li class="info-item">
+      Balance:
+      <b>9,705.45 USD </b>
+    </li>
+    <li class="info-item progress-val">
+      Day P/L:
+      <b>+ 0.001</b>
+    </li>
+    <li class="info-item">
+      Balance:
+      <b>9,705.45 USD </b>
+    </li>
+  </ul>
+
+  <ul class="nav-settings">
+    <li class="settings-item">
+      <img [src]="'./assets/img/icons/bell-icon.png'" alt="bell-icon" class="settings-icon">
+    </li>
+    <li class="settings-item" (click)="toggleThemeComponent()">
+      <img [src]="themeFlag ? './assets/img/icons/light-icon.png' : './assets/img/icons/moon-icon.png'" alt="theme-icon" class="settings-icon">
+
+    </li>
+    <li class="settings-item">
+      <img [src]="'./assets/img/icons/profile-icon.png'" alt="" class="settings-icon">
+      <span>mr.User</span>
+    </li>
+  </ul>
+</div>

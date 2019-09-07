@@ -1,0 +1,23 @@
+<div class="currency-item">
+  <div class="header">
+    {{currencyItem.symbol}}
+  </div>
+  <div class="values">
+    <div class="value">
+      <div class="small-value">
+        {{currencyItem.openPrice}}
+      </div>
+      <div class="large-value" [ngClass]="currencyItem.sellPrice.progress ? 'green' : currencyItem.sellPrice.regress ? 'red' : ''">
+        <b>{{currencyItem.sellPrice.value}}<sup><small>5</small></sup></b>
+      </div>
+    </div>
+    <div class="value">
+      <div class="small-value">
+        {{currencyItem.closePrice}}
+      </div>
+      <div class="large-value" [ngClass]="currencyItem.buyPrice.progress ? 'green' : currencyItem.buyPrice.regress ? 'red' : ''">
+        <b>{{currencyItem.buyPrice.value}}<sup><small>5</small></sup></b>
+      </div>
+    </div>
+  </div>
+</div>
