@@ -1,10 +1,33 @@
 <div ngDraggable class="chat" [bounds]="boundsElement" [inBounds]="true">
-	<div class="header">
-		<div class="close" (click)="close()">
-			<img [src]="themeFlag? './assets/img/icons/close-white.svg' : './assets/img/icons/close.svg'">
+	<form>
+		<div class="header">
+			<div class="close-btn" (click)="closeChat()">
+				<img [src]="'./assets/img/icons/close-white.png'">
+			</div>
+			<div class="name">OTP Support</div>
+			<div class="status">typing…</div>
 		</div>
-		<div class="name">OTP Support</div>
-		<div class="status">typing…</div>
-	</div>
+		<div class="body-chat">
 
+			<ng-container *ngFor="let item of messages">
+				<div class="message-right" *ngIf="item.owner === 2">
+					<img [src]="'./assets/img/icons/avatar-user.png'" class="avatar-chat">
+					<div class="text">
+						{{item.text}}
+					</div>
+					<div class="date">{{item.date}}</div>
+				</div>
+
+				<div class="message-left" *ngIf="item.owner === 1">
+					<img [src]="'./assets/img/icons/otp-logo.png'" class="avatar-chat">
+					<div class="text">
+						{{item.text}}
+					</div>
+					<div class="date">{{item.date}}</div>
+				</div>
+			</ng-container>
+
+			<input name="message" type="text" [(ngModel)]="message" class="message-input" placeholder="Write a message" #box (keyup.enter)="onEnter(box.value)">
+		</div>
+	</form>
 </div>

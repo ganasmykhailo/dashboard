@@ -1,4 +1,4 @@
-.modal-title{
+.modal-title {
   font-weight: bold;
   font-size: 15px;
   line-height: 20px;
@@ -7,38 +7,38 @@
   padding-bottom: 20px;
 }
 
-.currency-form{
+.currency-form {
   position: relative;
 
-  .form-line{
+  .form-line {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-top: 12px;
 
-    .form-item{
+    .form-item {
       position: relative;
       display: flex;
       flex-direction: column;
       flex: 1 0 0;
       margin-right: 5px;
 
-      &:last-child{
+      &:last-child {
         margin-right: 0;
       }
 
-      .item-label{
+      .item-label {
         font-size: 12px;
         line-height: 19px;
         margin-bottom: 0;
         text-transform: uppercase;
       }
 
-      .input-field{
+      .input-field {
         width: 100%;
         position: relative;
 
-        input{
+        input {
           width: 100%;
           height: 30px;
           padding: 0 15px;
@@ -51,16 +51,18 @@
       }
 
       .dropdown-menu {
+        width: 100%;
         background-color: var(--main-modal-bg-color);
         color: var(--primary-text-color);
 
-        li{
-          a{
+        li {
+          a {
             transition: .15s ease-out;
             cursor: pointer;
             font-size: 12px;
             line-height: 22px;
-            &:hover{
+
+            &:hover {
               background-color: transparent;
               opacity: .75;
               transition: .15s ease-in;
@@ -71,7 +73,7 @@
     }
   }
 
-  .dd-select{
+  .dd-select {
     position: relative;
     text-align: left;
     background-color: var(--main-modal-input-bg);
@@ -85,7 +87,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--primary-text-color);
-    .caret{
+
+    .caret {
       width: 15px;
       height: 15px;
       display: inline-block;
@@ -93,7 +96,7 @@
       right: 5px;
       top: 13px;
 
-      span{
+      span {
         top: 0;
         position: absolute;
         width: 9px;
@@ -102,13 +105,13 @@
         display: inline-block;
         transition: all 0.2s ease;
 
-        &:first-of-type{
+        &:first-of-type {
           left: 0;
           -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
         }
 
-        &:last-of-type{
+        &:last-of-type {
           right: 0;
           -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
@@ -117,8 +120,8 @@
     }
   }
 
-  .input-field{
-    .spin-buttons{
+  .input-field {
+    .spin-buttons {
       position: absolute;
       right: 1px;
       top: 0;
@@ -127,7 +130,7 @@
       flex-direction: column;
       justify-content: space-between;
 
-      span{
+      span {
         width: 22px;
         height: 14.5px;
         background-color: var(--input-spinner-bg);
@@ -137,7 +140,7 @@
         line-height: 14px;
         cursor: pointer;
 
-        &.disabled{
+        &.disabled {
           cursor: not-allowed;
           opacity: .7;
         }
@@ -149,7 +152,7 @@
     -webkit-appearance: none;
   }
 
-  .buttons-wrap{
+  .buttons-wrap {
     width: 100%;
     display: block;
     margin-top: 20px;
@@ -157,54 +160,88 @@
     overflow: hidden;
     height: 50px;
 
-    button{
+    button {
       display: inline-block;
       width: 50%;
       border-radius: 0;
       height: 100%;
       font-size: 14px;
       line-height: 19px;
+      background-color: transparent;
 
-      &.sell{
-        background-color: transparent;
+      &.sell {
         color: var(--primary-text-color);
-        border: 1px solid #1F1B24;
-        border-right: none;
-        border-top-left-radius: 12px;
-        border-bottom-left-radius: 12px;
 
         b {
           position: relative;
+
           &:after {
             content: url('../../../../../assets/img/icons/arrow-top-green-icon.png');
             position: absolute;
             margin-left: 15px;
           }
         }
+
+
+        &.active {
+          color: #ffffff;
+          background-color: #EB5757;
+
+          b {
+            &:after {
+              content: url('../../../../../assets/img/icons/arrow-top-white-icon.png');
+            }
+          }
+        }
+
+        border: 1px solid #1F1B24;
+        border-right: none;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+
       }
 
-      &.buy{
-        background-color: #62B35F;
-        color: #fff;
+      &.buy {
+        background-color: transparent;
+        color: var(--primary-text-color);
 
         b {
           position: relative;
+
           &:after {
-            content: url('../../../../../assets/img/icons/arrow-top-white-icon.png');
+            content: url('../../../../../assets/img/icons/arrow-top-green-icon.png');
             position: absolute;
             margin-left: 15px;
           }
         }
+
+        &.active {
+          color: #ffffff;
+          background-color: #62B35F;
+
+          b {
+            &:after {
+              content: url('../../../../../assets/img/icons/arrow-top-white-icon.png');
+            }
+          }
+        }
+
+        border: 1px solid #1F1B24;
+        border-left: none;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+
+
       }
 
-      b{
+      b {
         display: block;
       }
     }
   }
 }
 
-.close-button{
+.close-button {
   position: absolute;
   top: 0;
   right: 0;

@@ -11,7 +11,7 @@
 					<ul id="list-items" *dropdownMenu class="dropdown-menu"
 					    role="menu" aria-labelledby="items-list">
 						<li *ngFor="let choice of ddItemsList">
-							<a class="dropdown-item" href="#">{{choice}}</a>
+							<a class="dropdown-item" (click)="sortCurrency(choice)">{{choice}}</a>
 						</li>
 					</ul>
 				</div>
@@ -21,14 +21,14 @@
 					<ul id="list-options" *dropdownMenu class="dropdown-menu"
 					    role="menu" aria-labelledby="options-list">
 						<li *ngFor="let choice of ddItemsOptions">
-							<a class="dropdown-item" href="#">{{choice}}</a>
+							<a class="dropdown-item" (click)="sortCurrencyBy(choice)">{{choice}}</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 
 			<div class="tab-content">
-				<app-currency-item *ngFor="let item of currencyList" [currencyItem]="item" [themeFlag]="themeFlag"></app-currency-item>
+				<app-currency-item *ngFor="let item of cloneCurrencyList" [currencyItem]="item" [themeFlag]="themeFlag"></app-currency-item>
 			</div>
 		</div>
 

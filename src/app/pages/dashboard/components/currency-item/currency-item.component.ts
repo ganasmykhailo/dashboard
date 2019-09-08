@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BsModalService} from 'ngx-bootstrap';
-import {CurrencyModalComponent} from '../../modals/currency-modal/currency-modal.component';
+import { Component, Input, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { CurrencyModalComponent } from '../../modals/currency-modal/currency-modal.component';
 
 @Component({
   selector: 'app-currency-item',
@@ -16,8 +16,10 @@ export class CurrencyItemComponent implements OnInit {
   public sellInt: number;
   public buyDecimal;
   public sellDecimal;
+  bsModalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService) {
+  }
 
   ngOnInit() {
     this.buyInt = parseInt(this.currencyItem.buyPrice.value, 10);
@@ -26,8 +28,11 @@ export class CurrencyItemComponent implements OnInit {
     this.sellDecimal = this.getValueAfterDot(parseFloat(this.currencyItem.sellPrice.value).toFixed(1));
   }
 
-  public detailCurrency() {
-    this.modalService.show(CurrencyModalComponent, {class: `currency-modal ${this.themeFlag ? 'dark-theme' : 'light-theme'}`, initialState: this.currencyItem});
+  public orderModal(item, sell) {
+    this.bsModalRef = this.modalService.show(CurrencyModalComponent,
+      {class: `currency-modal ${this.themeFlag ? 'dark-theme' : 'light-theme'}`, initialState: this.currencyItem});
+    this.bsModalRef.content.currencyItem = item;
+    this.bsModalRef.content.sell = sell;
   }
 
   public getValueAfterDot(value: string) {

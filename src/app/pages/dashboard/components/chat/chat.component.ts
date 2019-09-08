@@ -10,16 +10,46 @@ export class ChatComponent implements OnInit {
 
   @Input() public boundsElement;
   public themeFlag;
+  public message;
+  public messages = [];
 
   constructor(private dashboardService: DashboardService) {
   }
 
   ngOnInit() {
     this.dashboardService.themeFlag$.subscribe((value) => this.themeFlag = value);
+
+    const firstMessage = {
+      owner: 1,
+      date: this.getTime(),
+      text: 'Hello how we can help you?'
+    };
+    setTimeout(() => {
+      this.messages.push(firstMessage);
+    }, 1000);
   }
 
-  close() {
-    console.log('close'); // TODO remove console.log
+  closeChat() {
+    this.dashboardService.showChat(false);
   }
 
+  onEnter(value) {
+
+
+    const message = {
+      owner: 2,
+      date: this.getTime(),
+      text: value
+    };
+    this.messages.push(message);
+    this.message = null;
+  }
+
+  private getTime() {
+    const today = new Date();
+    const time = today.getHours() + ':' + today.getMinutes();
+    const ampm = today.getHours() >= 12 ? 'pm' : 'am';
+
+    return `${time} ${ampm}`;
+  }
 }

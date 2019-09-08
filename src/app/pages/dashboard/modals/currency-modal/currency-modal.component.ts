@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BsModalRef, ModalOptions} from 'ngx-bootstrap';
+import { Component, Input, OnInit } from '@angular/core';
+import { BsModalRef, ModalOptions } from 'ngx-bootstrap';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-currency-modal',
@@ -10,6 +11,7 @@ export class CurrencyModalComponent implements OnInit {
 
   @Input()
   set currencyItem(item) {
+    console.log(item); // TODO remove console.log
     this.item = item;
   }
 
@@ -17,8 +19,10 @@ export class CurrencyModalComponent implements OnInit {
     return this.item;
   }
 
+  public sell;
+
   public baseCurrencyOptions = [
-    'USD, US Dollar',
+    'USD, US',
     'GBP, Great Britain Pound',
     'CHF, Swiss Franc',
     'JPY, Japanese Yen',
@@ -70,8 +74,8 @@ export class CurrencyModalComponent implements OnInit {
   ];
 
   public typeOption = [
-    'Pending Order',
     'Market Execution',
+    'Pending Order',
   ];
 
   public selectedBase = this.baseCurrencyOptions[0];
@@ -80,12 +84,14 @@ export class CurrencyModalComponent implements OnInit {
   public selectedOperation = this.currencyOperations[0];
   public volumeValue = 1.00;
   public disableSpin = false;
-  public stopLoss =  1.00000;
-  public profit = 0.00000;
+  public stopLoss = '0.00000';
+  public profit = '0.00000';
+  public atPrice = '0.00000';
+  public comment;
 
   private item;
 
-  constructor(public bsModalRef: BsModalRef, public modalOptions: ModalOptions) {
+  constructor(public bsModalRef: BsModalRef, public orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -110,19 +116,47 @@ export class CurrencyModalComponent implements OnInit {
     }
   }
 
-  public incrementValue(value, step) {
-    this[value] = +(this[value] + step).toFixed(2);
+  public incrementValue(value, step, toFixed: number) {
+    this[value] = (+this[value] + step).toFixed(toFixed);
   }
 
-  public decrementValue(value, step) {
-    if (this[value] > 0) {
-      this[value] = +(this[value] - step).toFixed(2);
-    } else {
-      this.disableSpin = true;
-    }
+  public decrementValue(value, step, toFixed: number) {
+    // if (this[value] > 0) {
+    this[value] = (+this[value] - step).toFixed(toFixed);
+    // } else {
+    //   this.disableSpin = true;
+    // }
+  }
+
+  public submit() {
+
+    /* tslint:disable */
+    this.orderService.orderList.unshift({
+      symbol: this.selectedBase,
+      ticket: 1000,
+      endTime: `${this.getDateTime()}`,
+      type: this.sell ? 'Sell' : 'Buy',
+      volume: this.volumeValue,
+      openPrice: 1.11034,
+      currentPrice: 1.11024,
+      fee: 0.00,
+      profit: +this.profit,
+      client: 'BIT Corporation',
+      comment: this.comment,
+      status: 'pending',
+    });
+    this.bsModalRef.hide();
   }
 
   public closeModal() {
     this.bsModalRef.hide();
+  }
+
+  private getDateTime() {
+    const today = new Date();
+    const time = today.getHours() + ':' + today.getMinutes();
+    const ampm = today.getHours() >= 12 ? 'pm' : 'am';
+
+    return `${today.getFullYear()}/${today.getMonth()}/${today.getDay()} ${time} ${ampm}`;
   }
 }

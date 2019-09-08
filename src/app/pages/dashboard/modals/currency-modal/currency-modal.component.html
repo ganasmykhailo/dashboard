@@ -1,176 +1,208 @@
 <div class="currency-modal-content">
-  <div class="modal-title">
-    Order
-  </div>
-  <div class="close-button" (click)="closeModal()">
-    +
-  </div>
-  <form action="" class="currency-form">
-    <div class="form-line">
-      <div class="form-item" dropdown>
+	<div class="modal-title">
+		Order
+	</div>
+	<div class="close-button" (click)="closeModal()">
+		+
+	</div>
+	<form class="currency-form">
+		<div class="form-line">
+			<div class="form-item" dropdown>
 
-        <label class="item-label">
-          Base currency
-        </label>
+				<label class="item-label">
+					Base currency
+				</label>
 
-        <button id="base-currency" dropdownToggle type="button" class="dd-select" aria-controls="base-dropdown-currency">
-         {{selectedBase}}
+				<button id="base-currency" dropdownToggle type="button" class="dd-select" aria-controls="base-dropdown-currency">
+					{{selectedBase}}
 
-          <div class="caret">
-            <span></span>
-            <span></span>
-          </div>
-        </button>
+					<div class="caret">
+						<span></span>
+						<span></span>
+					</div>
+				</button>
 
-        <ul id="base-dropdown-currency" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="base-currency">
+				<ul id="base-dropdown-currency" *dropdownMenu class="dropdown-menu"
+				    role="menu" aria-labelledby="base-currency">
 
-          <li role="menuitem" *ngFor="let option of baseCurrencyOptions; let i = index" (click)="selectOption(baseCurrencyOptions, i)">
-            <a class="dropdown-item">{{option}}</a>
-          </li>
-        </ul>
-      </div>
+					<li role="menuitem" *ngFor="let option of baseCurrencyOptions; let i = index" (click)="selectOption(baseCurrencyOptions, i)">
+						<a class="dropdown-item">{{option}}</a>
+					</li>
+				</ul>
+			</div>
 
-      <div class="form-item" dropdown>
-        <label class="item-label">
-          Quote currency
-        </label>
-        <button id="quote-currency" dropdownToggle type="button" class="dd-select" aria-controls="quote-currency-dropdown">
-          {{selectedQuote}}
+			<div class="form-item" dropdown>
+				<label class="item-label">
+					Quote currency
+				</label>
+				<button id="quote-currency" dropdownToggle type="button" class="dd-select" aria-controls="quote-currency-dropdown">
+					{{selectedQuote}}
 
-          <div class="caret">
-            <span></span>
-            <span></span>
-          </div>
-        </button>
-        <ul id="quote-currency-dropdown" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="quote-currency">
-          <li role="menuitem" *ngFor="let option of quoteCurrencyOptions; let i = index" (click)="selectOption(quoteCurrencyOptions, i)">
-            <a class="dropdown-item">{{option}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+					<div class="caret">
+						<span></span>
+						<span></span>
+					</div>
+				</button>
+				<ul id="quote-currency-dropdown" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="quote-currency">
+					<li role="menuitem" *ngFor="let option of quoteCurrencyOptions; let i = index" (click)="selectOption(quoteCurrencyOptions, i)">
+						<a class="dropdown-item">{{option}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-    <div class="form-line">
-      <div class="form-item">
-        <label class="item-label">
-          Volume
-        </label>
-        <div class="input-field">
-          <input type="number" class="value-spinner" placeholder="{{volumeValue}}" [value]="volumeValue" min="0" step="0.01">
+		<div class="form-line">
+			<div class="form-item">
+				<label class="item-label">
+					Volume
+				</label>
+				<div class="input-field">
+					<input type="number" class="value-spinner" placeholder="{{volumeValue}}" [value]="volumeValue" min="0" step="0.01">
 
-          <div class="spin-buttons">
-            <span (click)="incrementValue('volumeValue', 0.01)">+</span>
-            <span [ngClass]="disableSpin ? 'disabled' : ''" (click)="decrementValue('volumeValue', 0.01)">-</span>
-          </div>
-        </div>
-      </div>
-    </div>
+					<div class="spin-buttons">
+						<span (click)="incrementValue('volumeValue', 0.01, 2)">+</span>
+						<!--[ngClass]="disableSpin ? 'disabled' : ''"-->
+						<span (click)="decrementValue('volumeValue', 0.01, 2)">-</span>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div class="form-line">
-      <div class="form-item">
-        <label class="item-label">
-          Stop Loss
-        </label>
-        <div class="input-field">
-          <input type="number" class="value-spinner" placeholder="{{stopLoss}}" [value]="stopLoss" min="0" step="0.00001">
+		<div class="form-line">
+			<div class="form-item">
+				<label class="item-label">
+					Stop Loss
+				</label>
+				<div class="input-field">
+					<input type="text" class="value-spinner" placeholder="{{stopLoss}}" [value]="stopLoss" name="stopLoss">
 
-          <div class="spin-buttons">
-            <span (click)="incrementValue('stopLoss', 0.00001)">+</span>
-            <span [ngClass]="disableSpin ? 'disabled' : ''" (click)="decrementValue('stopLoss', 0.00001)">-</span>
-          </div>
-        </div>
-      </div>
+					<div class="spin-buttons">
+						<span (click)="incrementValue('stopLoss', 0.00001, 5)">+</span>
+						<!--[ngClass]="disableSpin ? 'disabled' : ''"-->
+						<span (click)="decrementValue('stopLoss', 0.00001, 5)">-</span>
+					</div>
+				</div>
+			</div>
 
-      <div class="form-item">
-        <label class="item-label">
-          Take profit
-        </label>
-        <div class="input-field">
-          <input type="number" class="value-spinner" placeholder="{{profit}}" [value]="profit" min="0" step="0.00001">
+			<div class="form-item">
+				<label class="item-label">
+					Take profit
+				</label>
+				<div class="input-field">
+					<input type="number" class="value-spinner" placeholder="{{profit}}" [value]="profit" min="0" step="0.00001">
 
-          <div class="spin-buttons">
-            <span (click)="incrementValue('profit', 0.00001)">+</span>
-            <span [ngClass]="disableSpin ? 'disabled' : ''" (click)="decrementValue('profit', 0.00001)">-</span>
-          </div>
-        </div>
-      </div>
-    </div>
+					<div class="spin-buttons">
+						<span (click)="incrementValue('profit', 0.00001, 5)">+</span>
+						<!--[ngClass]="disableSpin ? 'disabled' : ''"-->
+						<span (click)="decrementValue('profit', 0.00001, 5)">-</span>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div class="form-line">
-      <div class="form-item">
-        <label class="item-label">
-          Comment
-        </label>
-        <div class="input-field">
-          <input type="text">
-        </div>
-      </div>
-    </div>
+		<div class="form-line">
+			<div class="form-item">
+				<label class="item-label">
+					Comment
+				</label>
+				<div class="input-field">
+					<input type="text" [(ngModel)]="comment" name="comment">
+				</div>
+			</div>
+		</div>
 
-    <div class="form-line">
-      <div class="form-item" dropdown>
+		<div class="form-line">
+			<div class="form-item" dropdown>
 
-        <label class="item-label">
-          Type
-        </label>
+				<label class="item-label">
+					Type
+				</label>
 
-        <button id="type" dropdownToggle type="button" class="dd-select" aria-controls="type-dropdown">
-          {{selectedOption}}
+				<button id="type" dropdownToggle type="button" class="dd-select" aria-controls="type-dropdown">
+					{{selectedOption}}
 
-          <div class="caret">
-            <span></span>
-            <span></span>
-          </div>
-        </button>
+					<div class="caret">
+						<span></span>
+						<span></span>
+					</div>
+				</button>
 
-        <ul id="type-dropdown" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="type">
+				<ul id="type-dropdown" *dropdownMenu class="dropdown-menu"
+				    role="menu" aria-labelledby="type">
 
-          <li role="menuitem" *ngFor="let option of typeOption; let i = index" (click)="selectOption(typeOption, i)">
-            <a class="dropdown-item">{{option}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+					<li role="menuitem" *ngFor="let option of typeOption; let i = index" (click)="selectOption(typeOption, i)">
+						<a class="dropdown-item">{{option}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-    <div class="form-line">
-      <div class="form-item" dropdown>
+		<ng-container *ngIf="selectedOption === 'Pending Order'">
 
-        <label class="item-label">
-          Currency operations
-        </label>
+			<div class="form-line">
+				<div class="form-item">
+					<label class="item-label">
+						at price
+					</label>
+					<div class="input-field">
+						<input type="text" class="value-spinner" placeholder="{{stopLoss}}" [value]="atPrice" min="0" step="0.00001">
 
-        <button id="operations" dropdownToggle type="button" class="dd-select" aria-controls="operations-dropdown">
-          {{selectedOperation}}
+						<div class="spin-buttons">
+							<span (click)="incrementValue('atPrice', 0.00001, 5)">+</span>
+							<span (click)="decrementValue('atPrice', 0.00001, 5)">-</span>
+						</div>
+					</div>
+				</div>
 
-          <div class="caret">
-            <span></span>
-            <span></span>
-          </div>
-        </button>
+				<div class="form-item">
+					<label class="item-label">
+						expiry
+					</label>
+					<div class="input-field">
+						<input type="date" placeholder="DD / MM">
 
-        <ul id="operations-dropdown" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="operations">
+					</div>
+				</div>
+			</div>
+		</ng-container>
 
-          <li role="menuitem" *ngFor="let option of currencyOperations; let i = index" (click)="selectOption(currencyOperations, i)">
-            <a class="dropdown-item">{{option}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+		<div class="form-line">
+			<div class="form-item" dropdown>
 
-    <div class="buttons-wrap">
-      <button class="sell">
-        Sell
-        <b>1.10382</b>
-      </button>
-      <button class="buy">
-        Buy
-        <b>
-          1.10395
-        </b>
-      </button>
-    </div>
-  </form>
+				<label class="item-label">
+					Currency operations
+				</label>
+
+				<button id="operations" dropdownToggle type="button" class="dd-select" aria-controls="operations-dropdown">
+					{{selectedOperation}}
+
+					<div class="caret">
+						<span></span>
+						<span></span>
+					</div>
+				</button>
+
+				<ul id="operations-dropdown" *dropdownMenu class="dropdown-menu"
+				    role="menu" aria-labelledby="operations">
+
+					<li role="menuitem" *ngFor="let option of currencyOperations; let i = index" (click)="selectOption(currencyOperations, i)">
+						<a class="dropdown-item">{{option}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="buttons-wrap">
+			<button class="sell" [class.active]="sell" (click)="submit()">
+				Sell
+				<b>1.10382</b>
+			</button>
+			<button class="buy" [class.active]="!sell" (click)="submit()">
+				Buy
+				<b>
+					1.10395
+				</b>
+			</button>
+		</div>
+	</form>
 </div>

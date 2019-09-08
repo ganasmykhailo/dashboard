@@ -1,4 +1,4 @@
-.currency-item{
+.currency-item {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +8,11 @@
   box-sizing: border-box;
   margin: 3px 0;
 
-  .header{
+  &.disabled {
+    opacity: 0.69;
+  }
+
+  .header {
     background-color: #0D6D52;
     color: #fff;
     padding: 3px 15px;
@@ -18,18 +22,19 @@
     text-transform: uppercase;
   }
 
-  .values{
+  .values {
     display: flex;
     flex-direction: row;
 
     .value {
       flex: 1 1 0;
       padding: 8px;
+
       &:first-of-type {
         border-right: 1px solid #F2F2F2;
       }
 
-      .small-value{
+      .small-value {
         font-size: 12px;
         line-height: 20px;
         text-align: left;
@@ -37,32 +42,33 @@
         transition: .25s linear;
       }
 
-      .large-value{
+      .large-value {
         font-size: 24px;
         line-height: 20px;
         text-align: center;
         color: var(--primary-text-color);
         transition: .25s linear;
+        cursor: pointer;
 
-        &.green{
+        &.green {
           color: #62B35F;
 
-          sup{
+          sup {
             color: var(--primary-text-color);
             transition: .25s linear;
           }
         }
 
-        &.red{
+        &.red {
           color: #EB5757;
 
-          sup{
+          sup {
             color: var(--primary-text-color);
             transition: .25s linear;
           }
         }
 
-        sup{
+        sup {
           font-size: 12px;
           font-weight: normal;
           color: var(--primary-text-color);

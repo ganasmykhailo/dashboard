@@ -1,23 +1,27 @@
-<div class="currency-item" (click)="detailCurrency()">
-  <div class="header">
-    {{currencyItem.symbol}}
-  </div>
-  <div class="values">
-    <div class="value">
-      <div class="small-value">
-        {{currencyItem.openPrice}}
-      </div>
-      <div class="large-value" [ngClass]="currencyItem.sellPrice.progress ? 'green' : currencyItem.sellPrice.regress ? 'red' : ''">
-        <b>{{sellInt}}<sup><small>{{sellDecimal}}</small></sup></b>
-      </div>
-    </div>
-    <div class="value">
-      <div class="small-value">
-        {{currencyItem.closePrice}}
-      </div>
-      <div class="large-value" [ngClass]="currencyItem.buyPrice.progress ? 'green' : currencyItem.buyPrice.regress ? 'red' : ''">
-        <b>{{buyInt}}<sup><small>{{buyDecimal}}</small></sup></b>
-      </div>
-    </div>
-  </div>
+<div class="currency-item" [class.disabled]="currencyItem.disabled">
+	<div class="header">
+		{{currencyItem.symbol}}
+	</div>
+	<div class="values">
+		<div class="value">
+			<div class="small-value">
+				{{currencyItem.openPrice}}
+			</div>
+			<div class="large-value" (click)="orderModal(currencyItem, true)" [ngClass]="currencyItem.sellPrice.progress ? 'green' : currencyItem.sellPrice.regress ? 'red' : ''">
+				<b>{{sellInt}}<sup>
+					<small>{{sellDecimal}}</small>
+				</sup></b>
+			</div>
+		</div>
+		<div class="value">
+			<div class="small-value">
+				{{currencyItem.closePrice}}
+			</div>
+			<div class="large-value" (click)="orderModal(currencyItem)" [ngClass]="currencyItem.buyPrice.progress ? 'green' : currencyItem.buyPrice.regress ? 'red' : ''">
+				<b>{{buyInt}}<sup>
+					<small>{{buyDecimal}}</small>
+				</sup></b>
+			</div>
+		</div>
+	</div>
 </div>

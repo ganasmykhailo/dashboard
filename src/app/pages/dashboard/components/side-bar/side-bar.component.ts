@@ -24,6 +24,13 @@ export class SideBarComponent implements OnInit {
 
   ngOnInit() {
     this.dashboardService.themeFlag$.subscribe((value) => this.themeFlag = value);
+
+    this.dashboardService.openChat$.subscribe((value) => {
+      this.showChat = value;
+      if (!value) {
+        this.activeItem = null;
+      }
+    });
   }
 
   public openCallModal() {
