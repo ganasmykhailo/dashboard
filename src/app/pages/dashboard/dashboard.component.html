@@ -44,12 +44,10 @@
         <span class="title">
           News
         </span>
-				<img [src]="'./assets/img/icons/search-icon.png'" alt="search-icon" class="search-icon">
+				<!--<img [src]="'./assets/img/icons/search-icon.png'" alt="search-icon" class="search-icon">-->
 			</div>
 			<div class="search-content">
-				<app-news-item></app-news-item>
-				<app-news-item></app-news-item>
-				<app-news-item></app-news-item>
+				<app-news-item *ngFor="let item of news" [item]="item"></app-news-item>
 			</div>
 		</div>
 	</div>

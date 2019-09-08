@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
+import { DashboardService } from '../../dashboard.service';
 
 @Component({
   selector: 'app-call-modal',
@@ -8,10 +9,14 @@ import { BsModalRef } from 'ngx-bootstrap';
 })
 export class ExportModalComponent implements OnInit {
 
-  constructor(public bsModalRef: BsModalRef) {
+  public themeFlag;
+
+  constructor(public bsModalRef: BsModalRef,
+              private dashboardService: DashboardService) {
   }
 
   ngOnInit() {
+    this.dashboardService.themeFlag$.subscribe((value) => this.themeFlag = value);
   }
 
   download() {

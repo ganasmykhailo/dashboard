@@ -14,20 +14,24 @@ export class SideBarComponent implements OnInit {
   public bsModalRef: BsModalRef;
 
   public showTV: boolean;
+  public themeFlag;
 
   constructor(private modalService: BsModalService,
               private dashboardService: DashboardService) {
   }
 
   ngOnInit() {
+    this.dashboardService.themeFlag$.subscribe((value) => this.themeFlag = value);
   }
 
   public openCallModal() {
-    this.bsModalRef = this.modalService.show(CallModalComponent, {class: 'call-info-modal'});
+    this.bsModalRef = this.modalService.show(CallModalComponent,
+      {class: `call-info-modal ${this.themeFlag ? 'dark-theme' : 'light-theme'}`});
   }
 
   public openExportModal() {
-    this.bsModalRef = this.modalService.show(ExportModalComponent, {class: 'export-data-modal'});
+    this.bsModalRef = this.modalService.show(ExportModalComponent,
+      {class: `export-data-modal ${this.themeFlag ? 'dark-theme' : 'light-theme'}`});
   }
 
   public openTV() {

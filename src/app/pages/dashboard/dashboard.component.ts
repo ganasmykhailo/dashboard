@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
-import {OrderService} from './services/order.service';
+import { OrderService } from './services/order.service';
 
 declare const TradingView: any;
 
@@ -65,6 +65,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     },
   ];
 
+  public news = [];
+
   public ddItemsList = [
     'All',
     'Favorites',
@@ -90,6 +92,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.orderList = this.orderService.getOrderList();
     this.orderHistory = this.orderService.getOrderHistory();
     this.dashboardService.openTV$.subscribe((value) => this.showTV = value);
+
+    this.news = this.dashboardService.getNews();
   }
 
   ngAfterViewInit() {

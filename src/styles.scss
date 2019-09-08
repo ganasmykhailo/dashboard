@@ -62,21 +62,22 @@ button {
 
 .modal-dialog.call-info-modal {
   width: 170px;
-  background: var(--main-block-bg-color);
-  color: var(--primary-text-color);
   border-radius: 12px;
 
   .modal-content {
+    color: var(--primary-text-color);
+    background: var(--main-block-bg-color);
     padding: 9px;
   }
 }
 
-.modal-dialog.export-data-modal{
+.modal-dialog.export-data-modal {
   width: 360px;
-  background: var(--main-block-bg-color);
-  color: var(--primary-text-color);
   border-radius: 12px;
+
   .modal-content {
+    background: var(--main-block-bg-color);
+    color: var(--primary-text-color);
     padding: 53px 80px 69px 80px;
   }
 }
@@ -84,6 +85,7 @@ button {
 .modal-dialog {
   &.currency-modal {
     width: 455px;
+
     .modal-content {
       padding: 10px 50px 50px;
       background: var(--main-bg-color);

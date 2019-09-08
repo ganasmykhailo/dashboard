@@ -1,13 +1,13 @@
 <div class="news-item">
-  <div class="news-header">
-    <span class="title progress-val">
-      0.3<b>EUR/USD</b>
+	<div class="news-header">
+    <span class="title" [ngClass]="{'progress-val': item.increase, 'regress': !item.increase}">
+      {{item.price}}<b>{{item.currency}}</b>
     </span>
-    <span class="time">
-      Sep 4 2:05AM
+		<span class="time">
+      {{item.date}}
     </span>
-  </div>
-  <p class="news-text">
-    US: Contraction in ISM index — Nordea
-  </p>
+	</div>
+	<p class="news-text">
+		{{item.news}}
+	</p>
 </div>
