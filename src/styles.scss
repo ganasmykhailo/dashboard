@@ -9,6 +9,11 @@
   --table-list-color: #4f4f4f;
   --nav-menu-color-light: #828282;
   --news-text-color: #333;
+  --main-modal-bg-color: #fff;
+  --main-modal-input-bg: transparent;
+  --modal-input-border-color: #BDBDBD;
+  --input-spinner-bg: #BDBDBD;
+  --selector-arrow-color: #8E8E93;
 
   transition: .5s linear;
 }
@@ -21,6 +26,11 @@
   --table-list-color: #fff;
   --nav-menu-color-light: #f2f2f2;
   --news-text-color: #fff;
+  --main-modal-bg-color: #121212;
+  --main-modal-input-bg: #333;
+  --modal-input-border-color: transparent;
+  --input-spinner-bg: #1F1B24;
+  --selector-arrow-color: #fff;
 
   transition: .5s linear;
 }
@@ -88,7 +98,8 @@ button {
 
     .modal-content {
       padding: 10px 50px 50px;
-      background: var(--main-bg-color);
+      border-radius: 20px;
+      background: var(--main-modal-bg-color);
       color: var(--primary-text-color);
     }
   }

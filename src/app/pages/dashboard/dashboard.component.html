@@ -69,9 +69,23 @@
 					<span class="order-before">Order</span>
 					<span class="pending-before">Pending</span>
 				</ng-container>
-				<a class="filter-icon">
+				<a class="filter-icon" (click)="toggleFilter(true)">
 					<img [src]="'./assets/img/icons/filter-icon.png'" alt="filter-icon">
 				</a>
+        <div class="filter-bar" [ngClass]="showFilterBar ? 'show' : ''">
+            <span>
+              Order Type
+            </span>
+          <span>
+              Date
+            </span>
+          <span>
+              Currency Pair
+            </span>
+          <a class="filter-icon" (click)="toggleFilter(false)">
+            <img [src]="'./assets/img/icons/filter-icon-white.png'" alt="filter-icon">
+          </a>
+        </div>
 			</div>
 
 			<div class="order-list" [hidden]="visible !== 1">

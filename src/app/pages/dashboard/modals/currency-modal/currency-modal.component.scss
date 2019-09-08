@@ -4,4 +4,213 @@
   line-height: 20px;
   text-align: center;
   text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+.currency-form{
+  position: relative;
+
+  .form-line{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 12px;
+
+    .form-item{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 0;
+      margin-right: 5px;
+
+      &:last-child{
+        margin-right: 0;
+      }
+
+      .item-label{
+        font-size: 12px;
+        line-height: 19px;
+        margin-bottom: 0;
+        text-transform: uppercase;
+      }
+
+      .input-field{
+        width: 100%;
+        position: relative;
+
+        input{
+          width: 100%;
+          height: 30px;
+          padding: 0 15px;
+          background-color: var(--main-modal-input-bg);
+          border: 1px solid var(--modal-input-border-color);
+          border-radius: 4px;
+          font-size: 14px;
+          color: var(--primary-text-color);
+        }
+      }
+
+      .dropdown-menu {
+        background-color: var(--main-modal-bg-color);
+        color: var(--primary-text-color);
+
+        li{
+          a{
+            transition: .15s ease-out;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 22px;
+            &:hover{
+              background-color: transparent;
+              opacity: .75;
+              transition: .15s ease-in;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .dd-select{
+    position: relative;
+    text-align: left;
+    background-color: var(--main-modal-input-bg);
+    border: 1px solid var(--modal-input-border-color);
+    border-radius: 4px;
+    padding-right: 25px;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--primary-text-color);
+    .caret{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      position: absolute;
+      right: 5px;
+      top: 13px;
+
+      span{
+        top: 0;
+        position: absolute;
+        width: 9px;
+        height: 1.5px;
+        background-color: var(--selector-arrow-color);
+        display: inline-block;
+        transition: all 0.2s ease;
+
+        &:first-of-type{
+          left: 0;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+
+        &:last-of-type{
+          right: 0;
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  .input-field{
+    .spin-buttons{
+      position: absolute;
+      right: 1px;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      span{
+        width: 22px;
+        height: 14.5px;
+        background-color: var(--input-spinner-bg);
+        color: #fff;
+        text-align: center;
+        font-size: 15px;
+        line-height: 14px;
+        cursor: pointer;
+
+        &.disabled{
+          cursor: not-allowed;
+          opacity: .7;
+        }
+      }
+    }
+  }
+
+  input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .buttons-wrap{
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 50px;
+
+    button{
+      display: inline-block;
+      width: 50%;
+      border-radius: 0;
+      height: 100%;
+      font-size: 14px;
+      line-height: 19px;
+
+      &.sell{
+        background-color: transparent;
+        color: var(--primary-text-color);
+        border: 1px solid #1F1B24;
+        border-right: none;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+
+        b {
+          position: relative;
+          &:after {
+            content: url('../../../../../assets/img/icons/arrow-top-green-icon.png');
+            position: absolute;
+            margin-left: 15px;
+          }
+        }
+      }
+
+      &.buy{
+        background-color: #62B35F;
+        color: #fff;
+
+        b {
+          position: relative;
+          &:after {
+            content: url('../../../../../assets/img/icons/arrow-top-white-icon.png');
+            position: absolute;
+            margin-left: 15px;
+          }
+        }
+      }
+
+      b{
+        display: block;
+      }
+    }
+  }
+}
+
+.close-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--primary-text-color);
+  font-size: 25px;
+  transform: rotate(45deg);
+  padding: 0px 10px;
+  cursor: pointer;
 }

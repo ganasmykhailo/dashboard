@@ -16,6 +16,7 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { TvComponent } from './components/tv/tv.component';
 import { CurrencyModalComponent } from './modals/currency-modal/currency-modal.component';
 import { ChatComponent } from './components/chat/chat.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ChatComponent } from './components/chat/chat.component';
     TabsModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    AngularDraggableModule
+    AngularDraggableModule,
+    FormsModule
   ]
 })
 export class DashboardModule {
