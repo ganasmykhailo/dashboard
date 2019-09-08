@@ -19,22 +19,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   public currencyList = [
     {
-      symbol: 'USD/EUR',
-      openPrice: 1.10,
-      closePrice: 1.10,
-      sellPrice: {
-        value: 35.5,
-        progress: true,
-        regress: false,
-      },
-      buyPrice: {
-        value: 36.5,
-        progress: true,
-        regress: false,
-      },
-    },
-    {
-      symbol: 'USD/EUR',
+      symbol: 'EUR/USD',
       openPrice: 1.10,
       closePrice: 1.10,
       sellPrice: {
@@ -43,22 +28,82 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         regress: false,
       },
       buyPrice: {
-        value: 35.5,
+        value: 36.8,
+        progress: true,
+        regress: false,
+      },
+    },
+    {
+      symbol: 'USD/CHF',
+      openPrice: 0.68,
+      closePrice: 0.68,
+      sellPrice: {
+        value: 14.7,
+        progress: false,
+        regress: false,
+      },
+      buyPrice: {
+        value: 14.0,
         progress: false,
         regress: true,
       },
     },
     {
-      symbol: 'USD/EUR',
-      openPrice: 1.10,
-      closePrice: 1.10,
+      symbol: 'USD/UAH',
+      openPrice: 106,
+      closePrice: 106,
       sellPrice: {
-        value: 35.5,
-        progress: true,
+        value: 54.5,
+        progress: false,
         regress: false,
       },
       buyPrice: {
-        value: 35.5,
+        value: 55.8,
+        progress: false,
+        regress: true,
+      },
+    },
+    {
+      symbol: 'EUR/RUB',
+      openPrice: 117,
+      closePrice: 117,
+      sellPrice: {
+        value: 58.4,
+        progress: false,
+        regress: false,
+      },
+      buyPrice: {
+        value: 60.0,
+        progress: true,
+        regress: false,
+      },
+    },
+    {
+      symbol: 'USD/GPB',
+      openPrice: 1.32,
+      closePrice: 1.32,
+      sellPrice: {
+        value: 51.4,
+        progress: false,
+        regress: false,
+      },
+      buyPrice: {
+        value: 52.0,
+        progress: true,
+        regress: false,
+      },
+    },
+    {
+      symbol: 'EUR/CHF',
+      openPrice: 1.43,
+      closePrice: 1.43,
+      sellPrice: {
+        value: 23.5,
+        progress: false,
+        regress: false,
+      },
+      buyPrice: {
+        value: 24.1,
         progress: true,
         regress: false,
       },
@@ -83,6 +128,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ];
 
   public showTV: boolean;
+
+  public showFilterBar = false;
 
   constructor(private dashboardService: DashboardService,
               private orderService: OrderService) {
@@ -152,5 +199,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.orderService.removeOrder(ticket);
     this.orderList = this.orderService.getOrderList();
     this.orderHistory = this.orderService.getOrderHistory();
+  }
+
+  public toggleFilter(isOpen) {
+    this.showFilterBar = isOpen;
   }
 }

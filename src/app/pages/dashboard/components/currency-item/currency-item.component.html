@@ -8,7 +8,7 @@
         {{currencyItem.openPrice}}
       </div>
       <div class="large-value" [ngClass]="currencyItem.sellPrice.progress ? 'green' : currencyItem.sellPrice.regress ? 'red' : ''">
-        <b>{{currencyItem.sellPrice.value}}<sup><small>5</small></sup></b>
+        <b>{{sellInt}}<sup><small>{{sellDecimal}}</small></sup></b>
       </div>
     </div>
     <div class="value">
@@ -16,7 +16,7 @@
         {{currencyItem.closePrice}}
       </div>
       <div class="large-value" [ngClass]="currencyItem.buyPrice.progress ? 'green' : currencyItem.buyPrice.regress ? 'red' : ''">
-        <b>{{currencyItem.buyPrice.value}}<sup><small>5</small></sup></b>
+        <b>{{buyInt}}<sup><small>{{buyDecimal}}</small></sup></b>
       </div>
     </div>
   </div>

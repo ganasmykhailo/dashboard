@@ -15,6 +15,7 @@ import { ExportModalComponent } from './modals/export-modal/export-modal.compone
 import { AngularDraggableModule } from 'angular2-draggable';
 import { TvComponent } from './components/tv/tv.component';
 import { CurrencyModalComponent } from './modals/currency-modal/currency-modal.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CurrencyModalComponent } from './modals/currency-modal/currency-modal.c
     TabsModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    AngularDraggableModule
+    AngularDraggableModule,
+    FormsModule
   ]
 })
 export class DashboardModule {
