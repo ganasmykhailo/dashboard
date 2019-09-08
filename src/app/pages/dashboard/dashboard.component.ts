@@ -83,6 +83,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ];
 
   public showTV: boolean;
+  public showChat: boolean;
 
   constructor(private dashboardService: DashboardService,
               private orderService: OrderService) {
@@ -92,6 +93,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.orderList = this.orderService.getOrderList();
     this.orderHistory = this.orderService.getOrderHistory();
     this.dashboardService.openTV$.subscribe((value) => this.showTV = value);
+    this.dashboardService.openChat$.subscribe((value) => this.showChat = value);
 
     this.news = this.dashboardService.getNews();
   }

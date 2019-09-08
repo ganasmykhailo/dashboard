@@ -12,6 +12,10 @@ export class DashboardService {
   themeFlag: BehaviorSubject<boolean> = new BehaviorSubject(null);
   themeFlag$ = this.themeFlag.asObservable();
 
+  openChat: BehaviorSubject<boolean> = new BehaviorSubject(null);
+  openChat$ = this.openChat.asObservable();
+
+
   constructor() {
   }
 
@@ -21,6 +25,10 @@ export class DashboardService {
 
   showTV(value) {
     this.openTV.next(value);
+  }
+
+  showChat(value) {
+    this.openChat.next(value);
   }
 
   getNews() {

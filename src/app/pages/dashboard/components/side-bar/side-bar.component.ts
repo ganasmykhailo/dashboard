@@ -14,7 +14,9 @@ export class SideBarComponent implements OnInit {
   public bsModalRef: BsModalRef;
 
   public showTV: boolean;
+  public showChat: boolean;
   public themeFlag;
+  public activeItem: string;
 
   constructor(private modalService: BsModalService,
               private dashboardService: DashboardService) {
@@ -35,7 +37,14 @@ export class SideBarComponent implements OnInit {
   }
 
   public openTV() {
+    this.activeItem = this.activeItem === 'tv' ? null : 'tv';
     this.showTV = !this.showTV;
     this.dashboardService.showTV(this.showTV);
+  }
+
+  public openChat() {
+    this.activeItem = this.activeItem === 'chat' ? null : 'chat';
+    this.showChat = !this.showChat;
+    this.dashboardService.showChat(this.showChat);
   }
 }

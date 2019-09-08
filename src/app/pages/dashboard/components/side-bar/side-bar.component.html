@@ -1,9 +1,9 @@
 <div class="side-bar">
 	<ul class="side-bar-item-list">
-		<li class="side-bar-item" [class.active]="!showTV">
+		<li class="side-bar-item" [class.active]="!activeItem">
 			<img [src]="'./assets/img/icons/graphic-icon.png'" alt="" class="side-bar-item-icon">
 		</li>
-		<li class="side-bar-item" [class.active]="showTV" (click)="openTV()">
+		<li class="side-bar-item" [class.active]="activeItem === 'tv'" (click)="openTV()">
 			<img [src]="'./assets/img/icons/tv-icon.png'" alt="" class="side-bar-item-icon">
 		</li>
 		<li class="side-bar-item" (click)="openExportModal()">
@@ -12,7 +12,7 @@
 		<li class="side-bar-item" (click)="openCallModal()">
 			<img [src]="'./assets/img/icons/call-icon.png'" alt="" class="side-bar-item-icon">
 		</li>
-		<li class="side-bar-item">
+		<li class="side-bar-item" (click)="openChat()" [class.active]="activeItem === 'chat'">
 			<img [src]="'./assets/img/icons/message-icon.png'" alt="" class="side-bar-item-icon">
 		</li>
 		<li class="side-bar-item">

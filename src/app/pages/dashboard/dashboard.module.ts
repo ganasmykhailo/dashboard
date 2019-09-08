@@ -15,6 +15,7 @@ import { ExportModalComponent } from './modals/export-modal/export-modal.compone
 import { AngularDraggableModule } from 'angular2-draggable';
 import { TvComponent } from './components/tv/tv.component';
 import { CurrencyModalComponent } from './modals/currency-modal/currency-modal.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CurrencyModalComponent } from './modals/currency-modal/currency-modal.c
     ExportModalComponent,
     TvComponent,
     CurrencyModalComponent,
+    ChatComponent,
   ],
   entryComponents: [
     CallModalComponent,
